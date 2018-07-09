@@ -39,12 +39,13 @@ class ApplicationController < Sinatra::Base
   end
 
   patch "/posts/:id" do #submits and saves the updates
-
+    binding.pry
     @post = Post.find_by_id(params[:id])
     @post.name = params[:name]
     @post.content = params[:content]
     @post.save
     redirect to "/posts/#{post.id}"
+    
   end
 
   delete '/posts/:id/delete' do
